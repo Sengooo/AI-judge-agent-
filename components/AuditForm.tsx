@@ -12,59 +12,59 @@ interface AuditFormProps {
 
 const AuditForm: React.FC<AuditFormProps> = ({ prd, setPrd, code, setCode, onAudit, isLoading }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+      <div className="flex flex-col gap-3">
+        <label className="text-sm font-bold text-slate-700 uppercase tracking-widest flex items-center justify-between">
           <span>Product Requirements Document (PRD)</span>
-          <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded">Required</span>
+          <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded-full border border-sky-200 font-bold uppercase tracking-tight">Docket Input</span>
         </label>
         <textarea
-          className="flex-1 w-full bg-slate-900 border border-slate-800 rounded-lg p-4 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-none transition-all placeholder-slate-600"
-          placeholder="Paste requirements here... (e.g., 'The app must support file uploads up to 5MB and handle missing files with a 404 error')"
+          className="flex-1 w-full bg-white border-2 border-sky-100 rounded shadow-sm p-6 text-slate-800 focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-500/10 resize-none transition-all placeholder-slate-300 text-lg leading-relaxed"
+          placeholder="Paste requirements here... The Judge awaits your directives."
           value={prd}
           onChange={(e) => setPrd(e.target.value)}
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+      <div className="flex flex-col gap-3">
+        <label className="text-sm font-bold text-slate-700 uppercase tracking-widest flex items-center justify-between">
           <span>Source Code to Audit</span>
-          <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-indigo-400">Analysis Target</span>
+          <span className="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded-full border border-sky-200 font-bold uppercase tracking-tight">Evidence</span>
         </label>
         <textarea
-          className="flex-1 w-full bg-slate-900 border border-slate-800 rounded-lg p-4 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 code-font text-sm resize-none transition-all placeholder-slate-600"
+          className="flex-1 w-full bg-white border-2 border-sky-100 rounded shadow-sm p-6 text-slate-800 focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-500/10 code-font text-sm resize-none transition-all placeholder-slate-300 leading-relaxed"
           placeholder="Paste code snippet here..."
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
       </div>
 
-      <div className="lg:col-span-2 flex justify-center mt-4">
+      <div className="lg:col-span-2 flex justify-center mt-6">
         <button
           onClick={onAudit}
           disabled={isLoading || !prd.trim() || !code.trim()}
           className={`
-            px-8 py-3 rounded-full font-bold text-white transition-all transform active:scale-95 flex items-center gap-3
+            px-12 py-4 rounded font-bold text-white transition-all transform active:scale-95 flex items-center gap-4 shadow-xl uppercase tracking-widest
             ${isLoading 
-              ? 'bg-slate-800 cursor-not-allowed text-slate-500' 
-              : 'bg-indigo-600 hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)]'
+              ? 'bg-slate-400 cursor-not-allowed' 
+              : 'bg-sky-800 hover:bg-sky-900 hover:-translate-y-1'
             }
           `}
         >
           {isLoading ? (
             <>
-              <svg className="animate-spin h-5 w-5 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin h-5 w-5 text-white/50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Auditing with Reasoning Engine...
+              The Court is Deliberating...
             </>
           ) : (
             <>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              Run Strict QA Audit
+              Pass Final Judgment
             </>
           )}
         </button>
