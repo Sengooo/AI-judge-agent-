@@ -1,0 +1,5 @@
+{
+  "name": "QA Judge Agent - Senior Auditor",
+  "description": "A professional-grade code auditing tool that evaluates software against PRD requirements using advanced Gemini reasoning.",
+  "requestFramePermissions": []
+}
